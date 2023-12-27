@@ -1,6 +1,6 @@
 FROM php:8.2-apache-bookworm
 
-RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg apt-transport-https
 
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
@@ -11,12 +11,10 @@ RUN mkdir -p /home/.composer
 RUN  apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     # Tools
-    vim git curl cron wget zip unzip gnupg \
+    vim git cron wget zip unzip \
     # other
-    apt-transport-https \
     dma  \
     build-essential \
-    ca-certificates \
     mariadb-client \
     openssl \
     supervisor \
