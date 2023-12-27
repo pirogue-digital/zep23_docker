@@ -1,6 +1,6 @@
 FROM php:8.2-apache-bookworm
 
-RUN apt update && sudo apt install -y ca-certificates curl gnupg
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg
 
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
